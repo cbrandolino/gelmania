@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import Subject from './Subject';
 
+
 const Grid = styled.div`
   width: 20rem;
   height: 20rem;
@@ -12,7 +13,7 @@ const Grid = styled.div`
 `
 
 
-const SubjectMatrix = ({ subjects=[] }) => {
+const SubjectMatrix = ({ subjects }) => {
 
   return (
     <Grid>
