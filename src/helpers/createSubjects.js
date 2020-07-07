@@ -4,17 +4,18 @@ import flatten from 'ramda/src/flatten';
 const [ rows, cols ] = [ 20, 20 ];
 
 const createSubjects = ({ xBuckets, yBuckets, dataTemplate }) => {
-  const createColumn = (xBucket) =>
-    times((i) => {
+  const createColumn = (xBucket, row) =>
+    times((col) => {
       const xCat = xBucket;
-      const yCat = yBuckets[i % yBuckets.length];
+      const yCat = yBuckets[col % yBuckets.length];
       return ({
+        id: `${row}-${col}`,
         xCat,
         yCat,
         ...dataTemplate(xCat, yCat)
       })
     }, cols)
-  return flatten(times(i => createColumn(xBuckets[i % xBuckets.length]), rows));
+  return flatten(times(row => createColumn(xBuckets[row % xBuckets.length], row), rows));
 };
 
 export default createSubjects;

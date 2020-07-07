@@ -11,11 +11,13 @@ const SpriteSquare = styled.div`
   width: 1rem;
   height: 1rem;
   background-color: pink;
+  &:hover { 
+    box-shadow: inset 0 0 6px white;
+  }
   &:hover ${InfoBox} {
     display: block;
   }
-`
-
+`;
 
 const Subject = ({ id, data }) => {
   return (

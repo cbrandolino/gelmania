@@ -12,8 +12,8 @@ const dataTemplate = (gender, ageRange) => ({
   height: gaussianSample(70, 35),
 });
 
-const xBuckets = ['male', 'female'];
-const yBuckets = [[18,23],[24,29],[30,35],[36,41]];
+const yBuckets = ['male', 'female'];
+const xBuckets = [[18,23],[24,29],[30,35],[36,41]];
 
 const App = () => {
   return (
