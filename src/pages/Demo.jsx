@@ -16,6 +16,7 @@ const yBuckets = [[18,23],[24,29],[30,35],[36,41]];
 
 const Demo = () =>
   <StudyProvider {...{ dataTemplate, statsFor, xBuckets, yBuckets }}>
+    
     <Visualization>
       <AxisLegend axis="x" />
       <AxisLegend axis="y" />

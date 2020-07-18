@@ -8,7 +8,6 @@ const StudyProvider = ({ children, xBuckets, yBuckets, dataTemplate, statsFor })
     experiment: initSubjects({ xBuckets, yBuckets, dataTemplate, statsFor }),
     control: initSubjects({ xBuckets, yBuckets, dataTemplate, statsFor })
   };
-  console.log(conditions);
   const axesLabels = {
     x: xBuckets,
     y: yBuckets,
