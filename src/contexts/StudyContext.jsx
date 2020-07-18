@@ -1,10 +1,10 @@
 import React, { createContext, useContext } from 'react';
-import createSubjects from '../helpers/createSubjects';
+import initSubjects from '../helpers/initSubjects';
 
 const StudyContext = React.createContext();
 
-const StudyProvider = ({ children, xBuckets, yBuckets, dataTemplate }) => {
-  const subjects = createSubjects({ xBuckets, yBuckets, dataTemplate });
+const StudyProvider = ({ children, xBuckets, yBuckets, dataTemplate, statsFor }) => {
+  const { subjects, stats } = initSubjects({ xBuckets, yBuckets, dataTemplate, statsFor });
   return (
     <StudyContext.Provider value={{ subjects, xBuckets, yBuckets }}>
       { children }

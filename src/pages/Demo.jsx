@@ -9,11 +9,13 @@ const dataTemplate = (gender, ageRange) => ({
   height: gaussianSample(70, 35),
 });
 
+const statsFor = ['weight'];
+
 const xBuckets = ['male', 'female'];
 const yBuckets = [[18,23],[24,29],[30,35],[36,41]];
 
 const Demo = () =>
-  <StudyProvider {...{ dataTemplate, xBuckets, yBuckets }}>
+  <StudyProvider {...{ dataTemplate, statsFor, xBuckets, yBuckets }}>
     <SubjectMatrix
       xBuckets={xBuckets}
       yBuckets={yBuckets}

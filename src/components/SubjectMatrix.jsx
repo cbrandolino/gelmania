@@ -28,7 +28,7 @@ const SubjectMatrix = ({ dataTemplate }) => {
       <Legend axis="y" buckets={yBuckets} />
       <Grid>
         {
-          subjects.map(({ id, data }) => <Subject key={id} data={data} />)
+          subjects.map(({ id, data }) => <Subject key={id} id={id} data={data} />)
         }
       </Grid>
     </Matrix>
