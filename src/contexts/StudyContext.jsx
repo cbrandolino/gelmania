@@ -1,12 +1,18 @@
 import React, { createContext, useContext } from 'react';
 import initSubjects from '../helpers/initSubjects';
 
-const StudyContext = React.createContext();
+const StudyContext = createContext();
 
 const StudyProvider = ({ children, xBuckets, yBuckets, dataTemplate, statsFor }) => {
   const { subjects, stats } = initSubjects({ xBuckets, yBuckets, dataTemplate, statsFor });
+  const axesLabels = {
+    x: xBuckets,
+    y: yBuckets,
+  };
+  const getAxisLabels = (axis) => axesLabels[axis];
   return (
-    <StudyContext.Provider value={{ subjects, xBuckets, yBuckets }}>
+    <StudyContext.Provider
+      value={{ subjects, xBuckets, yBuckets, getAxisLabels, stats }}>
       { children }
     </StudyContext.Provider>
   );

@@ -1,6 +1,5 @@
 import times from 'ramda/src/times';
 import flatten from 'ramda/src/flatten';
-import isEmpty from 'ramda/src/isEmpty';
 
 const [ rows, cols ] = [ 20, 20 ];
 
