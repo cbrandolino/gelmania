@@ -2,22 +2,25 @@ import React from 'react';
 import styled from 'styled-components';
 
 const LegendBase = styled.div`
-  width: 20rem;
+  width: 21.5rem;
+  height: 1.5rem;
   display: flex;
+  position: absolute;
 `
-
 const LegendItem = styled.div`
   flex: 1 1 0px;
+  height: 1.5rem;
   text-align: center;
+  &:not(:last-of-type) {
+    border-right: 1px solid black;
+  }
 `
-
 const XLegend = styled(LegendBase)`
-  padding-left: 2rem;
+  padding-left: 1.5rem;
 `
 const YLegend = styled(LegendBase)`
-  position: absolute;
-  flex-direction: row-reverse;
-  transform:  translateY(21rem) rotate(-90deg);
+  padding-right: 1.5rem;
+  transform: translateY(21.5rem) rotate(-90deg);
   transform-origin: top left;
 `
 
@@ -30,9 +33,10 @@ const legendContainers = {
 
 const Legend = ({ axis, buckets }) => {
   const LegendContainer = legendContainers[axis];
+  const sortedBuckets = (axis === 'y') ? buckets.reverse() : buckets;
   return (
     <LegendContainer>
-      {buckets.map(label => <LegendItem key={label}>{displayValues(label)}</LegendItem>)}
+      {sortedBuckets.map(label => <LegendItem key={label}>{displayValues(label)}</LegendItem>)}
     </LegendContainer>
   )
 };
