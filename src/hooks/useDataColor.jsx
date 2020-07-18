@@ -11,12 +11,17 @@ const vizColors = {
 
 const colorMap = colorInterpolate(Object.values(vizColors));
 
-const useDataColor = (item, key) => {
-  const { stats, currentKey } = useStudyContext();
+const useDataColor = ({ key, condition }) => {
+  const { getCondition, currentKey } = useStudyContext();
   const dataKey = key || currentKey;
-  const { min, max } = stats[dataKey];
-  const normalizedValue = normalize(item[dataKey], min, max);
-  return colorMap(normalizedValue);
+  const { stats } = getCondition(condition);
+  return {
+    getSubjectColor: (item) => {
+      const { min, max } = stats[dataKey];
+      const normalizedValue = normalize(item[dataKey], min, max);
+      return colorMap(normalizedValue);
+    }
+  }
 }
 
 export default useDataColor;

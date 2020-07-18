@@ -21,6 +21,11 @@ const Demo = () =>
       <AxisLegend axis="y" />
       <SubjectGrid />
     </Visualization>
+    <Visualization>
+      <AxisLegend axis="x" />
+      <AxisLegend axis="y" />
+      <SubjectGrid condition="control"/>
+    </Visualization>
   </StudyProvider>;
 
 export default Demo;

@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import useDataColor from '../../hooks/useDataColor';
 import { useStudyContext } from '../../contexts/StudyContext';
 import SubjectCell from './SubjectCell';
 
@@ -12,12 +13,21 @@ const Grid = styled.div`
   align-content: flex-start;
 `
 
-const SubjectGrid = () => {
-  const { subjects } = useStudyContext();
+const SubjectGrid = ({ condition='experiment' }) => {
+  const { getCondition } = useStudyContext();
+  const { getSubjectColor } = useDataColor({ condition });
+  const { subjects } = getCondition(condition);
+
   return (
       <Grid>
         {
-          subjects.map(({ id, data }) => <SubjectCell key={id} id={id} data={data} />)
+          subjects.map(({ id, data }) =>
+            <SubjectCell
+              key={id}
+              id={id}
+              data={data}
+              color={getSubjectColor(data)}
+            />)
         }
       </Grid>
   );
