@@ -1,5 +1,5 @@
 import React from 'react';
-import Visualization, { SubjectGrid, Legend } from '../components/Visualization';
+import Visualization, { SubjectGrid, AxisLegend } from '../components/Visualization';
 import { random, gaussianSample } from '../helpers/math';
 import { StudyProvider } from '../contexts/StudyContext';
 
@@ -17,8 +17,8 @@ const yBuckets = [[18,23],[24,29],[30,35],[36,41]];
 const Demo = () =>
   <StudyProvider {...{ dataTemplate, statsFor, xBuckets, yBuckets }}>
     <Visualization>
-      <Legend axis="x" />
-      <Legend axis="y" />
+      <AxisLegend axis="x" />
+      <AxisLegend axis="y" />
       <SubjectGrid />
     </Visualization>
   </StudyProvider>;

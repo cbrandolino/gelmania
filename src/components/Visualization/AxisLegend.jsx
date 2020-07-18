@@ -32,7 +32,7 @@ const legendContainers = {
   y: YLegend
 };
 
-const Legend = ({ axis }) => {
+const AxisLegend = ({ axis }) => {
   const { getAxisLabels } = useStudyContext();
   const LegendContainer = legendContainers[axis];
   const labels = getAxisLabels(axis);
@@ -43,4 +43,4 @@ const Legend = ({ axis }) => {
   )
 };
 
-export default Legend;
+export default AxisLegend;

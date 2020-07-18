@@ -1,6 +1,8 @@
 import times from 'ramda/src/times';
 import flatten from 'ramda/src/flatten';
 
+import { normalize } from './math';
+
 const [ rows, cols ] = [ 20, 20 ];
 
 const initializeStat = (value) => ({
@@ -32,6 +34,7 @@ const addStatsForSubject = (subject, stats, statsFor) =>
 const collectStats = (stats, statsFor) => {
   const addSummaries = ({ min, max, sum, count }) => ({
     mean: sum / count,
+    normalMean: normalize(sum / count),
   });
   return statsFor.reduce((acc, key) => {
     return {
@@ -47,14 +50,14 @@ const initSubjects = ({ xBuckets, yBuckets, dataTemplate, statsFor=[] }) => {
     times((col) => {
       const xCat = xBucket;
       const yCat = yBuckets[col % yBuckets.length];
-      const subjectData = {
+      const subject = {
         id: `${row}-${col}`,
         xCat,
         yCat,
-        ...dataTemplate(xCat, yCat)
+        data: dataTemplate(xCat, yCat)
       };
-      runningStats = addStatsForSubject(subjectData, runningStats, statsFor);
-      return subjectData;
+      runningStats = addStatsForSubject(subject.data, runningStats, statsFor);
+      return subject;
     }, cols);
   const subjects = flatten(times(row => 
     createColumn(xBuckets[row % xBuckets.length], row), rows));

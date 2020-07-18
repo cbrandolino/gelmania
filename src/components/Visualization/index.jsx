@@ -1,4 +1,4 @@
-import Legend from './Legend';
+import AxisLegend from './AxisLegend';
 import SubjectGrid from './SubjectGrid';
 import styled from 'styled-components';
 
@@ -10,4 +10,4 @@ export default styled.div`
   flex-wrap: wrap;
 `;
 
-export { Legend, SubjectGrid };
+export { AxisLegend, SubjectGrid };

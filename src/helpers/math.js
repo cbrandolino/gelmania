@@ -6,4 +6,7 @@ const random = (min, max) =>
 const gaussianSample = (mean, variance) =>
   gaussian(mean, variance).ppf(Math.random());
 
-export { random, gaussianSample };
+const normalize = (x, min, max) =>
+  (x - min) / (max - min);
+
+export { random, gaussianSample, normalize };
