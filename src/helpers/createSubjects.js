@@ -14,7 +14,7 @@ const createSubjects = ({ xBuckets, yBuckets, dataTemplate }) => {
         yCat,
         ...dataTemplate(xCat, yCat)
       })
-    }, cols)
+    }, cols);
   return flatten(times(row => createColumn(xBuckets[row % xBuckets.length], row), rows));
 };
 

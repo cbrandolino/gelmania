@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useStudyContext } from '../contexts/StudyContext';
 import Legend from './Legend';
 import Subject from './Subject';
 
@@ -9,7 +10,7 @@ const Matrix = styled.div`
   height: 23rem;
   display: flex;
   flex-wrap: wrap;
-`
+`;
 
 const Grid = styled.div`
   width: 20rem;
@@ -19,7 +20,8 @@ const Grid = styled.div`
   flex-wrap: wrap;
   align-content: flex-start;
 `
-const SubjectMatrix = ({ xBuckets, yBuckets, subjects }) => {
+const SubjectMatrix = ({ dataTemplate }) => {
+  const { subjects, xBuckets, yBuckets } = useStudyContext();
   return (
     <Matrix>
       <Legend axis="x" buckets={xBuckets} />
