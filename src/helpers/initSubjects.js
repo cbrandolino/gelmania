@@ -22,15 +22,23 @@ const addStatsForSubject = (subject, stats, statsFor) =>
     const newValue = subject[key];
     const previousStat = acc[key];
     return {
-      ...previousStat,
+      ...stats,
       [key]: previousStat ?
         addDatapointToStat(newValue, previousStat):
         initializeStat(newValue),
     };
   }, stats);
 
-const collectStats = (stats) => {
-  return {};
+const collectStats = (stats, statsFor) => {
+  const addSummaries = ({ min, max, sum, count }) => ({
+    mean: sum / count,
+  });
+  return statsFor.reduce((acc, key) => {
+    return {
+      ...acc,
+      [key]: {...stats[key], ...addSummaries(stats[key])},
+    }
+  }, stats)
 };
 
 const initSubjects = ({ xBuckets, yBuckets, dataTemplate, statsFor=[] }) => {

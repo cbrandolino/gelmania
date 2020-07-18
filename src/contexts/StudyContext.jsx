@@ -10,6 +10,7 @@ const StudyProvider = ({ children, xBuckets, yBuckets, dataTemplate, statsFor })
     y: yBuckets,
   };
   const getAxisLabels = (axis) => axesLabels[axis];
+  console.log(stats);
   return (
     <StudyContext.Provider
       value={{ subjects, xBuckets, yBuckets, getAxisLabels, stats }}>
